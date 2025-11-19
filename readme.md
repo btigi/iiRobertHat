@@ -15,7 +15,7 @@ The library supports:
 | MIN      | ✗   |   ✗   | Area related
 | PAK      | ✗   |   ✗   | 
 | RED      | ✗   |   ✗   | 
-| RES      | ✗   |   ✗   | 
+| RES      | ✔   |   ✗   | Archive (ui graphics, sounds, text)
 | RHM      | ✗   |   ✗   | 
 | RHP      | ✗   |   ✗   | 
 | RHS      | ✗   |   ✗   | 
@@ -33,6 +33,32 @@ var mapProcessor = new MapProcessor();
 
 var image = mapProcessor.Read(@"D:\Games\Robin Hood - The Legend of Sherwood\DATA\Levels\Day\Croisement01.map");
 image.SaveAsJpeg(@"D:\data\Robin Hood - The Legend of Sherwood\Croisement01.jpg");
+
+
+
+var resources = resProcessor.Read(@"D:\Games\Robin Hood - The Legend of Sherwood\2047\data\Text\level.res");
+var idx = 0;
+foreach (var r in resources)
+{
+    if (r is IHasImages images)
+    {
+        var idx2 = 0;
+        foreach (var i in images.Images)
+        {
+            i.SaveAsJpeg(@$"D:\data\robinhood\{idx}_{idx2}.jpg");
+            idx2++;
+        }
+    }
+
+    if (r is IHasTextEntries texts)
+    {
+        foreach (var i in texts.TextEntries)
+        {
+
+        }
+    }
+    idx++;
+}
 ```
 
 
