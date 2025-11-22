@@ -9,5 +9,5 @@ public class Cursor : Resource, IHasImages
     public int Unknown { get; set; }
     public int Unknown2 { get; set; }
     public int Unknown3 { get; set; }
-    public List<Image<Rgba32>> Images { get; set; } = [];
+    public List<(Image<Rgba32> image, CompressionType compressionType)> Images { get; set; } = [];
 }
